@@ -1,0 +1,38 @@
+version: '2'
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 127.0.0.0/16
+        gateway: 127.0.0.1
+
+services:
+  music.local:
+      container_name: music.local
+      hostname: music.local
+      image: skyerus/environments:httpd-centos7-php73
+      volumes:
+        - ~/web/music:/app
+        - ~/.composer:/root/.composer
+        - ~/.gitconfig:/root/.gitconfig
+        - ./log/music:/var/log/music
+        - './tools:/tools'
+        - './phpsessions:/var/lib/php/session'
+        - ~/.docker_bash_history:/root/.bash_history
+      ports:
+        - '8081:80'
+      networks:
+        default:
+          ipv4_address: 127.0.0.2
+      environment:
+        - DB_HOST=mysql.music.local
+        - APP_ENV=local
+        - VOLUME=/app
+        - DOCKER_USER=${DOCKER_USER}
+        - DOCKER_GROUP=${DOCKER_GROUP}
+        - HOST_USER_ID=${HOST_USER_ID}
+        - HOST_GROUP_ID=${HOST_GROUP_ID}
+        - PHP_IDE_CONFIG=serverName=music.local
+        - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=${HOST_ADDRESS} profiler_enabled=0 remote_connect_back=0
