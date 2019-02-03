@@ -2,6 +2,8 @@ FROM    centos:7
 
 #install git, php7.3 & httpd
 RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
+    curl -sL https://rpm.nodesource.com/setup_10.x && \
+    yum -y install nodejs && \
     yum -y update && \
     yum -y install --enablerepo=remi,remi-php73 \
                    php \
