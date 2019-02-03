@@ -16,7 +16,7 @@
 MUSICDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 alias environments="cd $MUSICDIR/docker/music"
-alias docker-music-up="sudo chown -R ${user}:${user} $MUSICDIR; environments; music-gen-env; sudo docker-compose up -d;genhosts"
+alias docker-music-up="sudo chown -R ${user}:${user} $MUSICDIR; environments; music-gen-env; sudo docker-compose up -d; genhosts"
 alias docker-music-down='environments; sudo docker-compose down'
 alias music-gen-env='environments; . generate_env.sh'
 alias genhosts="cd $MUSICDIR; ./generate-host-file.sh"

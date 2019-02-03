@@ -5,8 +5,8 @@ networks:
     driver: bridge
     ipam:
       config:
-      - subnet: 127.0.0.0/16
-        gateway: 127.0.0.1
+      - subnet: 172.5.0.0/16
+        gateway: 172.5.5.254
 
 services:
   music.local:
@@ -14,7 +14,7 @@ services:
       hostname: music.local
       image: skyerus/environments:httpd-centos7-php73
       volumes:
-        - ~/web/music:/app
+        - ~/personalweb/music:/app
         - ~/.composer:/root/.composer
         - ~/.gitconfig:/root/.gitconfig
         - ./log/music:/var/log/music
@@ -25,7 +25,7 @@ services:
         - '8081:80'
       networks:
         default:
-          ipv4_address: 127.0.0.2
+          ipv4_address: 172.5.0.2
       environment:
         - DB_HOST=mysql.music.local
         - APP_ENV=local
