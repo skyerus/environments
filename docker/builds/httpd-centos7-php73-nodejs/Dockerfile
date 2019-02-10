@@ -2,6 +2,10 @@ FROM    centos:7
 
 #install git, php7.3 & httpd
 RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
+    yum -y install curl sudo && \
+    sudo yum install epel-release && \
+    curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash - && \
+    yum -y install nodejs && \
     yum -y update && \
     yum -y install --enablerepo=remi,remi-php73 \
                    php \
@@ -21,8 +25,6 @@ RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm &
                    git && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
-RUN yum -y upgrade && yum clean all
-
 #update httpd.conf
 COPY httpd.conf /etc/httpd/conf/httpd.conf
 
@@ -37,4 +39,4 @@ EXPOSE 80
 
 WORKDIR /app
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+#CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
