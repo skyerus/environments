@@ -1,0 +1,9 @@
+[Sun Feb 10 17:42:07.804359 2019] [suexec:notice] [pid 1] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Sun Feb 10 17:42:07.829138 2019] [auth_digest:notice] [pid 1] AH01757: generating secret for digest authentication ...
+[Sun Feb 10 17:42:07.829974 2019] [lbmethod_heartbeat:notice] [pid 1] AH02282: No slotmem from mod_heartmonitor
+[Sun Feb 10 17:42:07.865693 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.6 (CentOS) PHP/7.3.2 configured -- resuming normal operations
+[Sun Feb 10 17:42:07.865727 2019] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Sun Feb 10 17:42:16.778086 2019] [autoindex:error] [pid 8] [client 172.5.5.254:47914] AH01276: Cannot serve directory /app/: No matching DirectoryIndex (index.html,index.php) found, and server-generated directory index forbidden by Options directive
+[Sun Feb 10 17:42:25.416130 2019] [autoindex:error] [pid 9] [client 172.5.5.254:47948] AH01276: Cannot serve directory /app/: No matching DirectoryIndex (index.html,index.php) found, and server-generated directory index forbidden by Options directive
+[Sun Feb 10 17:47:11.384517 2019] [autoindex:error] [pid 11] [client 172.5.5.254:48134] AH01276: Cannot serve directory /app/: No matching DirectoryIndex (index.html,index.php) found, and server-generated directory index forbidden by Options directive
+[Sun Feb 10 17:51:21.847116 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down

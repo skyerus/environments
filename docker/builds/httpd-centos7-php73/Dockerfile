@@ -2,6 +2,7 @@ FROM    centos:7
 
 #install git, php7.3 & httpd
 RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
+    yum -y install http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-1.0.2k-16.el7.x86_64.rpm && \
     yum -y update && \
     yum -y install --enablerepo=remi,remi-php73 \
                    php \
@@ -16,8 +17,10 @@ RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm &
                    php-pecl-xdebug \
                    php-gd \
                    php-fpm \
+                   php-xml \
                    httpd \
                    sendmail \
+                   openssl \
                    git && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
@@ -31,6 +34,7 @@ COPY app-directory.conf /etc/httpd/conf.d/
 
 #update php.ini
 COPY php.ini /etc/php.ini
+COPY 15-xdebug.ini /etc/php.d/15-xdebug.ini
 
 #port and entry
 EXPOSE 80
