@@ -39,6 +39,15 @@ COPY 15-xdebug.ini /etc/php.d/15-xdebug.ini
 #port and entry
 EXPOSE 80
 
+COPY tools/entrypoint /tools/entrypoint
+COPY tools/permission_fix /tools/permission_fix
+
+RUN ["chmod", "+x", "/tools/entrypoint"]
+
+RUN mkdir -p /var/data
+
 WORKDIR /app
+
+ENTRYPOINT ["/tools/entrypoint"]
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]

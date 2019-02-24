@@ -65,7 +65,6 @@ services:
       - ~/.composer:/root/.composer
       - ~/.gitconfig:/root/.gitconfig
       - ./log/music-api:/var/log/music-api
-      - './tools:/tools'
       - './phpsessions:/var/lib/php/session'
       - ~/.docker_bash_history:/root/.bash_history
     ports:
