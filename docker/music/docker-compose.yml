@@ -64,7 +64,7 @@ services:
       - ~/personalweb/music-api:/app
       - ~/.composer:/root/.composer
       - ~/.gitconfig:/root/.gitconfig
-      - ./log/music-api:/var/log/music-api
+      - ./log/music-api/app:/var/log/music-api/app
       - './phpsessions:/var/lib/php/session'
       - ~/.docker_bash_history:/root/.bash_history
     ports:
