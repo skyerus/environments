@@ -42,12 +42,12 @@ EXPOSE 80
 COPY tools/entrypoint /tools/entrypoint
 COPY tools/permission_fix /tools/permission_fix
 
-RUN ["chmod", "+x", "/tools/entrypoint"]
+#RUN ["chmod", "+x", "/tools/entrypoint"]
 
 RUN mkdir -p /var/data
 
 WORKDIR /app
 
-ENTRYPOINT ["/tools/entrypoint"]
+#ENTRYPOINT ["/tools/entrypoint"]
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
