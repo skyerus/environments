@@ -16,7 +16,8 @@ services:
       container_name: music.local
       hostname: music.local
       image: skyerus/environments:httpd-centos7-php73-nodejs
-      command: bash -c "npm install && npm run build && /usr/sbin/httpd -D FOREGROUND"
+#      command: bash -c "npm install && npm run build && /usr/sbin/httpd -D FOREGROUND"
+      command: bash -c "npm install && npm run dev"
       volumes:
         - ~/personalweb/music:/app
         - ~/personalweb/music/node_modules:/app/node_modules
