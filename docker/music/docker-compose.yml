@@ -15,8 +15,8 @@ services:
   music.local:
       container_name: music.local
       hostname: music.local
-      image: skyerus/environments:httpd-php73-nodejs
-      command: bash -c "npm install && npm run dev"
+      image: skyerus/environments:httpd-centos7-php73-nodejs
+      command: bash -c "npm install && npm run build && /usr/sbin/httpd -D FOREGROUND"
       volumes:
         - ~/personalweb/music:/app
         - ~/personalweb/music/node_modules:/app/node_modules
@@ -98,7 +98,7 @@ services:
         ipv4_address: 172.5.0.5
     environment:
       - DB_HOST=mysql.music.local
-      - APP_ENV=local
+      - APP_ENV=dev
       - VOLUME=/app
       - DOCKER_USER=${DOCKER_USER}
       - DOCKER_GROUP=${DOCKER_GROUP}
