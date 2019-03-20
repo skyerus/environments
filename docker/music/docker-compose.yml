@@ -109,3 +109,15 @@ services:
       - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=${HOST_ADDRESS} profiler_enabled=0 remote_connect_back=0
       - HOST=0.0.0.0
       - PORT=80
+
+  memcached.local:
+    container_name: memcached.local
+    hostname: memcached.local
+    image: memcached
+    volumes:
+      - ~/.docker_bash_history:/root/.bash_history
+    networks:
+      default:
+        ipv4_address: 172.5.0.6
+    ports:
+      - 11211
