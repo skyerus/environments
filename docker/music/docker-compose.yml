@@ -126,7 +126,7 @@ services:
     container_name: notifications.local
     hostname: notifications.local
     image: skyerus/environments:httpd-centos7-php73-nodejs
-    command: bash -c "npm install && npm start"
+    command: tail -F anything
     volumes:
       - ~/personalweb/notifications:/app
       - ~/personalweb/notifications/node_modules:/app/node_modules
@@ -143,9 +143,10 @@ services:
         ipv4_address: 172.5.0.7
     environment:
       - APP_ENV=local
-      - MUSIC_API_SOCKET=http://music-api.local/api/user/socket/
+      - MUSIC_API_SOCKET=http://music-api.local/api/user/socket
       - MUSIC_API_HOST=http://music-api.local/
-      - MUSIC_HOST=http://music.local/
+      - MUSIC_HOST=http://music.local
+      - DEBUG=express:*
       - VOLUME=/app
       - DOCKER_USER=${DOCKER_USER}
       - DOCKER_GROUP=${DOCKER_GROUP}
