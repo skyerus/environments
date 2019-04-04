@@ -25,12 +25,6 @@ fi
 if [ -z "$HOST_MACHINE_IP" ]
 then
     ## Get default ip address
-    HOST_MACHINE_IP=$(ip route get 1 | awk '{print $NF;exit}')
-fi
-
-if [ -z "$HOST_MACHINE_IP" ]
-then
-    ## Get default ip address
     HOST_MACHINE_IP=$(ip route get 2 | awk -F'[: ]+' '{ print $7 }')
 fi
 
