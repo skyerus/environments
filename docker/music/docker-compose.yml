@@ -99,7 +99,7 @@ services:
         ipv4_address: 172.5.0.5
     environment:
       - DB_HOST=mysql.music.local
-      - APP_ENV=local
+      - APP_ENV=dev
       - VOLUME=/app
       - DOCKER_USER=${DOCKER_USER}
       - DOCKER_GROUP=${DOCKER_GROUP}
