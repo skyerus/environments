@@ -15,6 +15,7 @@ RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm &
                    php-mcrypt \
                    php-mysqlnd \
                    php-pecl-xdebug \
+                   php-pecl-redis \
                    php-gd \
                    php-fpm \
                    php-xml \
@@ -50,4 +51,4 @@ WORKDIR /app
 
 #ENTRYPOINT ["/tools/entrypoint"]
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+#CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
