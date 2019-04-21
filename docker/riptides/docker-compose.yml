@@ -18,6 +18,7 @@ services:
       container_name: riptides.local
       hostname: riptides.local
       image: skyerus/environments:httpd-centos7-php73-nodejs
+#      image: skyerus/environments:httpd-centos7-nodejs-prod
 #      command: bash -c "npm install && npm run build && /usr/sbin/httpd -D FOREGROUND"
       command: bash -c "npm install && npm run dev"
 #      command: bash -c "tail -f /dev/null"

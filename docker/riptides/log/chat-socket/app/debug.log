@@ -1,0 +1,57 @@
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"service":"chat-socket","level":"info","message":"Server listening at port %d"}
+{"message":"Redis client connected","level":"info","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoes disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"undefined disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
+{"message":"johndoe disconnected","level":"debug","service":"chat-socket"}
