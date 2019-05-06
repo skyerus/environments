@@ -1,0 +1,175 @@
+version: '2'
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.5.0.0/16
+        gateway: 172.5.5.254
+
+volumes:
+  mysql.rip.local:
+  redis.local:
+  jenkins_home:
+
+services:
+  riptides.local:
+      container_name: riptides.local
+      hostname: riptides.local
+      image: skyerus/environments:httpd-centos7-php73-nodejs
+#      image: skyerus/environments:httpd-centos7-nodejs-prod
+#      command: bash -c "npm install && npm run build && /usr/sbin/httpd -D FOREGROUND"
+      command: bash -c "npm install && npm run dev"
+#      command: bash -c "tail -f /dev/null"
+      volumes:
+        - ~/personalweb/riptides:/app
+        - ~/personalweb/riptides/node_modules:/app/node_modules
+        - ~/.composer:/root/.composer
+        - ~/.gitconfig:/root/.gitconfig
+        - ./log/riptides:/var/log/riptides
+        - './tools:/tools'
+        - './phpsessions:/var/lib/php/session'
+        - ~/.docker_bash_history:/root/.bash_history
+      ports:
+        - '8080:80'
+      networks:
+        default:
+          ipv4_address: 172.5.0.2
+      environment:
+        - DB_HOST=mysql.riptides.local
+        - APP_ENV=local
+        - VOLUME=/app
+        - DOCKER_USER=${DOCKER_USER}
+        - DOCKER_GROUP=${DOCKER_GROUP}
+        - HOST_USER_ID=${HOST_USER_ID}
+        - HOST_GROUP_ID=${HOST_GROUP_ID}
+        - PHP_IDE_CONFIG=serverName=riptides.local
+        - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=${HOST_ADDRESS} profiler_enabled=0 remote_connect_back=0
+        - HOST=0.0.0.0
+        - PORT=80
+
+  mysql.rip.local:
+    container_name: mysql.rip.local
+    hostname: mysql.rip.local
+    image: skyerus/environments:mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - "mysql.rip.local:/var/lib/mysql"
+      - ~/.docker_bash_history:/root/.bash_history
+    networks:
+      default:
+        aliases:
+          - mysql.riptides.local
+        ipv4_address: 172.5.0.4
+    ports:
+      - '3308:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=riptides
+      - MYSQL_USER=riptides
+      - MYSQL_PASSWORD=riptides
+      - MYSQL_DATABASE=riptides
+
+  riptides-api.local:
+    container_name: riptides-api.local
+    hostname: riptides-api.local
+    image: skyerus/environments:httpd-centos7-php73
+    command: ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+    volumes:
+      - ~/personalweb/riptides-api:/app
+      - ~/.composer:/root/.composer
+      - ~/.gitconfig:/root/.gitconfig
+      - ./log/riptides-api/app:/var/log/riptides-api/app
+      - './phpsessions:/var/lib/php/session'
+      - ~/.docker_bash_history:/root/.bash_history
+    ports:
+      - '8081:80'
+    networks:
+      default:
+        ipv4_address: 172.5.0.5
+    environment:
+      - DB_HOST=mysql.riptides.local
+      - APP_ENV=dev
+      - VOLUME=/app
+      - DOCKER_USER=${DOCKER_USER}
+      - DOCKER_GROUP=${DOCKER_GROUP}
+      - HOST_USER_ID=${HOST_USER_ID}
+      - HOST_GROUP_ID=${HOST_GROUP_ID}
+      - PHP_IDE_CONFIG=serverName=riptides-api.local
+      - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=${HOST_ADDRESS} profiler_enabled=0 remote_connect_back=0
+      - HOST=0.0.0.0
+      - PORT=80
+        
+  chat-socket.local:
+    container_name: chat-socket.local
+    hostname: chat-socket.local
+    image: skyerus/environments:httpd-centos7-php73-nodejs
+#    command: bash -c "npm install && npm start"
+    command: bash -c "tail -f /dev/null"
+    volumes:
+      - ~/personalweb/chat-socket:/app
+      - ~/personalweb/chat-socket/node_modules:/app/node_modules
+      - ~/.composer:/root/.composer
+      - ~/.gitconfig:/root/.gitconfig
+      - ./log/chat-socket:/var/log/chat-socket
+      - './tools:/tools'
+      - './phpsessions:/var/lib/php/session'
+      - ~/.docker_bash_history:/root/.bash_history
+    ports:
+      - '8082:80'
+    networks:
+      default:
+        ipv4_address: 172.5.0.6
+    environment:
+      - APP_ENV=local
+      - RIPTIDES_API_HOST=http://riptides-api.local/
+      - RIPTIDES_HOST=http://riptides.local
+      - DEBUG=express:*
+      - VOLUME=/app
+      - DOCKER_USER=${DOCKER_USER}
+      - DOCKER_GROUP=${DOCKER_GROUP}
+      - HOST_USER_ID=${HOST_USER_ID}
+      - HOST_GROUP_ID=${HOST_GROUP_ID}
+      - PHP_IDE_CONFIG=serverName=chat-socket.local
+      - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=${HOST_ADDRESS} profiler_enabled=0 remote_connect_back=0
+      - HOST=0.0.0.0
+      - PORT=80
+
+  redis.local:
+    container_name: redis.local
+    hostname: redis.local
+    image: redis:5.0.4
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis.local:/data
+    networks:
+      default:
+        ipv4_address: 172.5.0.7
+    ports:
+      - '8083:6379'
+
+  memcached.local:
+    container_name: memcached.local
+    hostname: memcached.local
+    image: memcached
+    volumes:
+      - ~/.docker_bash_history:/root/.bash_history
+    networks:
+      default:
+        ipv4_address: 172.5.0.8
+    ports:
+      - 11211
+
+  jenkins.local:
+    container_name: jenkins.local
+    hostname: jenkins.local
+    image: skyerus/environments:jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      default:
+        ipv4_address: 172.5.0.9
+    ports:
+      - '8084:8080'
+      - '50000:50000'
