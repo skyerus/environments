@@ -21,8 +21,6 @@ alias ripenvs="cd $DIR/docker/riptides"
 alias docker-music-up="sudo chown -R ${user}:${user} $DIR; musicenvs; music-gen-env; sudo docker-compose up -d; genhosts"
 alias docker-music-down='musicenvs; sudo docker-compose down'
 alias docker-rip-up="sudo chown -R ${user}:${user} $DIR; ripenvs; rip-gen-env; sudo docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
-alias docker-api-up="sudo chown -R ${user}:${user} $DIR; APIDIR; docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
-alias docker-api-down="APIDIR; docker-compose down"
 alias docker-rip-down='ripenvs; sudo docker-compose down'
 alias music-gen-env='musicenvs; . generate_env.sh'
 alias rip-gen-env='ripenvs; . generate_env.sh'
@@ -95,4 +93,15 @@ dockips() {
      echo " "
   done
   echo -e "$d"
+}
+
+strpad() {
+    str=$1
+    len=$2
+    padlen=$(( $len - ${#str} ))
+    if [ $padlen -gt 0 ]
+    then
+       pad=$(head -c $padlen < /dev/zero | tr '\0' ' ')
+    fi
+    echo "${str}${pad}"
 }

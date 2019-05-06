@@ -20,6 +20,7 @@ Make sure you are in your home directory `cd ~/`
 ```
 git clone git@github.com:skyerus/environments.git
 echo '. ~/environments/bash-helpers.sh' >> ~/.bashrc
+. ~/environments/docker/riptides/setup-directories.sh
 bash
 ```
 
