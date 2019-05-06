@@ -1,20 +1,20 @@
-#Setup
+# Setup
 
-##Docker
+## Docker
 
 For installation follow the instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
 
-##Docker-compose
+## Docker-compose
 
 For installation follow the instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04)
 
-##Git
+## Git
 
 For installation follow the instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04-quickstart)
 
 To set up an ssh key follow [this](http://wiki.paparazziuav.org/wiki/Github_manual_for_Ubuntu)
 
-##Environments
+## Environments
 
 Make sure you are in your home directory `cd ~/`
 ```
