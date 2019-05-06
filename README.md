@@ -19,7 +19,7 @@ To set up an ssh key follow [this](http://wiki.paparazziuav.org/wiki/Github_manu
 Make sure you are in your home directory `cd ~/`
 ```
 git clone git@github.com:skyerus/environments.git
-echo '. ~/environments/bash_helpers.sh' >> ~/.bashrc
+echo '. ~/environments/bash-helpers.sh' >> ~/.bashrc
 bash
 ```
 
