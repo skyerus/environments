@@ -7,8 +7,8 @@ ENVFILE=.env
 
 STAR=" $E[93m★$E[39m"
 
-DUSER=apache
-DGROUP=apache
+DUSER=app
+DGROUP=app
 
 IDU=$(id -u)
 IDG=$(id -g)

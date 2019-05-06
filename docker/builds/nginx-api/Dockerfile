@@ -8,3 +8,4 @@ RUN apk add --no-cache bash
 COPY site.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
+WORKDIR /app

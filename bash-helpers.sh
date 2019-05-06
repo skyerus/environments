@@ -15,11 +15,14 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
+alias APIDIR="cd $DIR/docker/riptides/api"
 alias musicenvs="cd $DIR/docker/music"
 alias ripenvs="cd $DIR/docker/riptides"
 alias docker-music-up="sudo chown -R ${user}:${user} $DIR; musicenvs; music-gen-env; sudo docker-compose up -d; genhosts"
 alias docker-music-down='musicenvs; sudo docker-compose down'
 alias docker-rip-up="sudo chown -R ${user}:${user} $DIR; ripenvs; rip-gen-env; sudo docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
+alias docker-api-up="sudo chown -R ${user}:${user} $DIR; APIDIR; docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
+alias docker-api-down="APIDIR; docker-compose down"
 alias docker-rip-down='ripenvs; sudo docker-compose down'
 alias music-gen-env='musicenvs; . generate_env.sh'
 alias rip-gen-env='ripenvs; . generate_env.sh'
@@ -46,4 +49,50 @@ dockip() {
   fi
 
   echo $ip
+}
+
+dockbash() {
+  docker exec -it $@ bash
+}
+
+dockips() {
+
+  echo " IPs of running docker containers"
+  echo " "
+  echo "   Container ID     IP               Name                            URL"
+  echo "  —————————————————————————————————————————————————————————————————————————————————————————————————————————————"
+  for container in $(docker ps -q)
+  do
+     name=$(docker inspect --format '{{ .Name }}' "$container")
+     name=${name:1}
+
+     port=$(docker port ${container} | grep 80/tcp | cut -d: -f2)
+     ip=$(dockip ${container})
+
+     echo -ne "   $g${container}     $d$(strpad $ip 15)  $b$(strpad ${name} 30)"
+
+
+     if [ -n "$port" ]
+     then
+         if [ "$name" = "dashboard.local" ]
+         then
+             host="dashboard.local:$port dashboard.local"
+         elif [ "$name" = "phoenix-reborn.local" ]
+         then
+             host="localhost:$port phoenix-reborn.local"
+         elif [ "$OS" = "Linux" ]
+         then
+             host=$name
+         else
+             host="localhost:$port"
+         fi
+
+         for ep in $host
+         do
+           echo -ne "  ${d}http://${ep}/"
+         done
+     fi
+     echo " "
+  done
+  echo -e "$d"
 }

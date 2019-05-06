@@ -53,13 +53,6 @@ dockipsforhostfile() {
   do
      name=$(docker inspect --format '{{ .Name }}' "$container")
      name=${name:1}
-#     if [ "$name" = "air-httpd-dashboard" ]
-#     then
-#        name="$name dashboard.local vouchers.local"
-#     elif [ "$name" = "air-httpd-issuancemicrosites" ]
-#     then
-#        name="$name issuanceportal.local"
-#     fi
      alias=$(docker inspect --format="{{range .NetworkSettings.Networks}}{{.Aliases}}{{end}}" "$container")
        alias=${alias:1}
        alias=${alias::-1}
