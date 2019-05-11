@@ -18,14 +18,15 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 alias APIDIR="cd $DIR/docker/riptides/api"
 alias musicenvs="cd $DIR/docker/music"
 alias ripenvs="cd $DIR/docker/riptides"
-alias docker-music-up="sudo chown -R ${user}:${user} $DIR; musicenvs; music-gen-env; sudo docker-compose up -d; genhosts"
+alias docker-music-up="sudo chown -R ${USER}:${USER} $DIR; musicenvs; music-gen-env; sudo docker-compose up -d; genhosts"
 alias docker-music-down='musicenvs; sudo docker-compose down'
-alias docker-rip-up="sudo chown -R ${user}:${user} $DIR; ripenvs; rip-gen-env; sudo docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
+alias docker-rip-up="sudo chown -R ${USER}:${USER} $DIR; ripenvs; rip-gen-env; sudo docker-compose up -d; genhosts; sudo chmod 077 /var/run/docker.sock"
 alias docker-rip-down='ripenvs; sudo docker-compose down'
 alias music-gen-env='musicenvs; . generate_env.sh'
 alias rip-gen-env='ripenvs; . generate_env.sh'
 alias genhosts="cd $DIR; ./generate-host-file.sh"
 alias ripdebug="tail -f -n100 $DIR/docker/riptides/log/riptides-api/app/debug.log"
+alias chownweb="sudo chown -R ${USER}:${USER} ~/web"
 
 dockip() {
   c=$@
