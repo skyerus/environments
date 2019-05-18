@@ -9,4 +9,5 @@ RUN go get github.com/derekparker/delve/cmd/dlv
 RUN apk add --no-cache libc6-compat
 RUN echo 'alias build="go build -gcflags \"all=-N -l\" -o /riptides-go github.com/skyerus/riptides-go"' >> ~/.bashrc
 RUN echo 'alias delve="go/bin/dlv --listen=:40000 --headless=true --api-version=2 exec /riptides-go"' >> ~/.bashrc
+RUN echo 'alias run="build; delve"' >> ~/.bashrc
 WORKDIR /
