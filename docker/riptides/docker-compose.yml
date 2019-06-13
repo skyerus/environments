@@ -65,6 +65,8 @@ services:
     hostname: riptides-api.local
     image: skyerus/environments:riptides-go
     command: bash -c "tail -f /dev/null"
+    networks:
+      - riptides
     security_opt:
       - seccomp:unconfined
     cap_add:
@@ -74,6 +76,13 @@ services:
     ports:
       - '8080:80'
       - '40000:40000'
+    environment:
+      - DB_HOST=mysql.riptides.local:3306
+      - DB_USER=riptides
+      - DB_PASSWORD=riptides
+      - DB_NAME=riptides
+      - JWT_PATH=/go/src/github.com/skyerus/riptides-go/config/jwt
+      - TZ=Europe/London
 
   riptides.local:
     container_name: riptides.local
