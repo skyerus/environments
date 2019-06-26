@@ -83,6 +83,17 @@ services:
       - DB_NAME=riptides
       - JWT_PATH=/go/src/github.com/skyerus/riptides-go/config/jwt
       - TZ=Europe/London
+      - SPOTIFY_CLIENT_ID=fill
+      - SPOTIFY_CLIENT_SECRET=fill
+      - SPOTIFY_REDIRECT_URI=http://riptides.local/settings
+      - CORS_ALLOW_ORIGIN=http://riptides.local
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis.local
+      - GOOGLE_JSON_PATH=/go/src/github.com/skyerus/riptides-go/config/google
+      - FORGOT_PASSWORD_TPL=/go/src/github.com/skyerus/riptides-go/assets/email/forgotPassword.html
+      - MAILGUN_DOMAIN=mg.riptides.io
+      - MAILGUN_API_KEY=fill
+      - RIPTIDES_HOST=http://riptides.local
 
   riptides.local:
     container_name: riptides.local
