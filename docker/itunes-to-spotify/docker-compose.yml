@@ -1,0 +1,23 @@
+version: '3.5'
+
+networks:
+  itunes-to-spotify:
+    name: itunes-to-spotify_network
+
+services:
+  riptides-api.local:
+    container_name: itunes-to-spotify.local
+    hostname: itunes-to-spotify.local
+    image: skyerus/environments:itunes-to-spotify
+    command: bash -c "tail -f /dev/null"
+    networks:
+      - riptides
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - ~/go/src:/go/src
+    ports:
+      - '8080:80'
+      - '40000:40000'
