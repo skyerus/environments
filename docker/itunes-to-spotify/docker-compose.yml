@@ -11,7 +11,7 @@ services:
     image: skyerus/environments:itunes-to-spotify
     command: bash -c "tail -f /dev/null"
     networks:
-      - riptides
+      - itunes-to-spotify
     security_opt:
       - seccomp:unconfined
     cap_add:
